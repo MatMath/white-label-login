@@ -4,7 +4,7 @@
   "description": "Login page that depending on the user preference it will privide the proper app. ie: while label",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/server.js"
   },
   "author": "mkl",
   "license": "ISC",
