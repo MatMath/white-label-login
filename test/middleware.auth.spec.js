@@ -1,19 +1,19 @@
 const { expect } = require('chai');
-const { decodeToken, checkAppPermision, isUserAlreadyLoguedin } = require('../src/middleware/auth');
+const { decodeToken, checkAppPermision, isUserAlreadyLoggedin } = require('../src/middleware/auth');
 
 describe('middleware', () => {
   describe('JWT .decodeToken', () => {
     it('should decode the JWT token', () => {
       const req = {
         cookies: {
-          token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6Im1hdGhpZXUubGVnYXVsdEBjcmVtZWdsb2JhbC5jb20iLCJleHAiOjE1NTkzMTE0OTUsImVtYWlsIjoibWF0aGlldS5sZWdhdWx0QGNyZW1lZ2xvYmFsLmNvbSJ9.fJ9n-hdla8udLafTFX4JM5kAaZx1jEqU5iToP2N-z60"
+          token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6ImJvYiByaWdodCIsImV4cCI6MTU1OTMxMTQ5NSwiZW1haWwiOiJib2IucmlnaHRAZXhhbXBsZS5jb20ifQ.hh9mmR18hInXSnQByLGQY0d4v5l64Gbje_SoSEKE3AY"
         }
       }
       decodeToken(req, {}, () => {});
       expect(req.user).to.deep.equal({ user_id: 5,
-        username: 'mathieu.legault@cremeglobal.com',
+        username: 'bob right',
         exp: 1559311495,
-        email: 'mathieu.legault@cremeglobal.com'
+        email: 'bob.right@example.com'
       });
     });
 
@@ -69,14 +69,14 @@ describe('middleware', () => {
     })
   });
 
-  describe('./isUserAlreadyLoguedin', () => {
+  describe('./isUserAlreadyLoggedin', () => {
     it('should keep to login if user do not exist', (done) => {
       const req = { user: null }
       const nextMock = (data) => {
         expect(data).to.be.undefined;
         done();
       };
-      isUserAlreadyLoguedin()(req, {}, nextMock);
+      isUserAlreadyLoggedin()(req, {}, nextMock);
     });
 
     it('should redirect to app if user is already logued-in', (done) => {
@@ -89,7 +89,7 @@ describe('middleware', () => {
           done();
         }
       }
-      isUserAlreadyLoguedin({redirect: '/app'})(req, res, () => {});
+      isUserAlreadyLoggedin({redirect: '/app'})(req, res, () => {});
     });
   });
 

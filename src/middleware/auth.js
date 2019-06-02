@@ -19,7 +19,7 @@ const checkAppPermision = (opts) => (req, res, next) => {
   return res.redirect(opts.redirect);
 };
 
-const isUserAlreadyLoguedin = (opts) => (req, res, next) => {
+const isUserAlreadyLoggedin = (opts) => (req, res, next) => {
   if (req.user && req.user.email) {
     // Good token so Redirect to proper APP
     return res.redirect(opts.redirect); // TODO: Find what App is link witht he user.
@@ -30,5 +30,5 @@ const isUserAlreadyLoguedin = (opts) => (req, res, next) => {
 module.exports = {
   decodeToken,
   checkAppPermision,
-  isUserAlreadyLoguedin,
+  isUserAlreadyLoggedin,
 };
