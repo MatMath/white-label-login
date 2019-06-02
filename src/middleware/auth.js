@@ -9,4 +9,16 @@ function decodeToken (req, res, next) {
   next();
 }
 
-module.exports = { decodeToken };
+// TODO: Validate Token.
+
+const checkAppPermision = (opts) => (req, res, next) => {
+  if (!req.user) {
+    // Redirect to login
+    return res.redirect(opts.redirect);
+  }
+  if (req.user.email) {
+    return next();
+  }
+}
+
+module.exports = { decodeToken, checkAppPermision };
