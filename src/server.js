@@ -32,8 +32,4 @@ app.get('/login', (req, res) => { res.sendFile(app1) });
 app.get('/app1', (req, res) => { res.sendFile(app1) });
 app.get('/app2', (req, res) => { res.sendFile(app2) });
 
-const PORT = process.env.PORT || 8081;
-app.listen(PORT, () => {
-    console.log(`App listening to ${PORT}....`)
-    console.log('Press Ctrl+C to quit.')
-})
+module.exports = app;

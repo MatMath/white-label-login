@@ -4,7 +4,7 @@
   "description": "Login page that depending on the user preference it will privide the proper app. ie: while label",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/server.js"
+    "start": "nodemon ./bin/www.js"
   },
   "author": "mkl",
   "license": "MIT",
@@ -13,7 +13,11 @@
     "express-bunyan-logger": "^1.3.3"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "git-cz": "^3.0.1",
-    "nodemon": "^1.19.1"
+    "mocha": "^6.1.4",
+    "nock": "^10.0.6",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }
