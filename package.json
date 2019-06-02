@@ -4,7 +4,8 @@
   "description": "Login page that depending on the user preference it will privide the proper app. ie: while label",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www.js"
+    "start": "nodemon ./bin/www.js",
+    "test": "mocha"
   },
   "author": "mkl",
   "license": "MIT",
