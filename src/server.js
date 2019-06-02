@@ -10,7 +10,7 @@ const app2 = path.join(DIST_DIR, '../dist', 'app2.html');
 
 // local files
 const clientErrorHandler = require('./clientErrorHandler');
-const { decodeToken, checkAppPermision } = require('./middleware/auth');
+const { decodeToken, checkAppPermision, isUserAlreadyLoguedin } = require('./middleware/auth');
 
 const app = express();
 
@@ -29,11 +29,18 @@ app.use(clientErrorHandler);
 
 // URl to handle.
 app.use(express.static(DIST_DIR));
-app.get('/login', (req, res) => { res.sendFile(app1) });
+app.get('/login', isUserAlreadyLoguedin({redirect:'/app'}), (req, res) => {
+  res.sendFile(login)
+});
 
 // Secured URL depending on the user.
+
+app.get('/app', checkAppPermision({redirect:'/login'}), (req, res) => {
+  // Depending on the user permission load the proper app.
+  // ex: default to app, otherwize overwrite to X?
+  res.sendFile(app1)
+});
 // app.get('*', (req, res) => { res.sendFile(login) });
-app.get('/app1', checkAppPermision({redirect:'/login'}), (req, res) => { res.sendFile(app1) });
-app.get('/app2', (req, res) => { res.sendFile(app2) });
+
 
 module.exports = app;

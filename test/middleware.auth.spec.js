@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { decodeToken, checkAppPermision } = require('../src/middleware/auth');
+const { decodeToken, checkAppPermision, isUserAlreadyLoguedin } = require('../src/middleware/auth');
 
 describe('middleware', () => {
   describe('JWT .decodeToken', () => {
@@ -67,6 +67,30 @@ describe('middleware', () => {
       }
       checkAppPermision({redirect: '/login'})(req, res, () => {});
     })
+  });
+
+  describe('./isUserAlreadyLoguedin', () => {
+    it('should keep to login if user do not exist', (done) => {
+      const req = { user: null }
+      const nextMock = (data) => {
+        expect(data).to.be.undefined;
+        done();
+      };
+      isUserAlreadyLoguedin()(req, {}, nextMock);
+    });
+
+    it('should redirect to app if user is already logued-in', (done) => {
+      const req = {
+        user: { email: 'abc.example.com'}
+      }
+      const res = {
+        redirect: (url) => {
+          expect(url).to.equal('/app');
+          done();
+        }
+      }
+      isUserAlreadyLoguedin({redirect: '/app'})(req, res, () => {});
+    });
   });
 
 });

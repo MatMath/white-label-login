@@ -1,7 +1,7 @@
 {
   "name": "white-label-login",
   "version": "0.0.1",
-  "description": "Login page that depending on the user preference it will privide the proper app. ie: while label",
+  "description": "Login page that depending on the user preference it will provide the proper app. ie: while label",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./bin/www.js",
