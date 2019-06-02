@@ -25,6 +25,7 @@ describe('server', () => {
     it('should redirect to proper app', () => {
       return supertest(server)
         .get('/login')
+        .set("cookie","token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6Im1hdGhpZXUubGVnYXVsdEBjcmVtZWdsb2JhbC5jb20iLCJleHAiOjE1NTkzMTE0OTUsImVtYWlsIjoibWF0aGlldS5sZWdhdWx0QGNyZW1lZ2xvYmFsLmNvbSJ9.fJ9n-hdla8udLafTFX4JM5kAaZx1jEqU5iToP2N-z60")
         .then((res) => {
         console.log(res.body);
         console.log(res.headers);

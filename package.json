@@ -10,8 +10,10 @@
   "author": "mkl",
   "license": "MIT",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "express-bunyan-logger": "^1.3.3"
+    "express-bunyan-logger": "^1.3.3",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",

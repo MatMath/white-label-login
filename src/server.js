@@ -1,6 +1,7 @@
 // Global package
 const path = require('path');
 const express = require('express');
+const cookieParser = require('cookie-parser')
 
 const DIST_DIR = __dirname;
 const login = path.join(DIST_DIR, '../dist', 'index.html');
@@ -13,6 +14,7 @@ const clientErrorHandler = require('./clientErrorHandler');
 const app = express();
 
 // Structure & handler around the request
+app.use(cookieParser());
 app.use(require('express-bunyan-logger')({
     name: 'whiteLabelLogin',
     excludes: ['user-agent', 'req', 'res'], // Too verbose for now.
