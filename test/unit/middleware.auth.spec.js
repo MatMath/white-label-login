@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { decodeToken, checkAppPermision, isUserAlreadyLoggedin } = require('../src/middleware/auth');
+const { decodeToken, checkAppPermision, isUserAlreadyLoggedin } = require('../../src/middleware/auth');
 
 describe('middleware', () => {
   describe('JWT .decodeToken', () => {

@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const server = require('../src/server');
+const server = require('../../src/server');
 const supertest = require('supertest');
 
 // ex: {
