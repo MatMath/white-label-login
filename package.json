@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./bin/www.js",
+    "lint": "eslint . --fix",
+    "precommit": "npm run lint",
     "test": "mocha"
   },
   "author": "mkl",
@@ -17,6 +19,13 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-chai-expect": "^2.0.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-mocha": "^5.3.0",
+    "eslint-plugin-react": "^7.13.0",
     "git-cz": "^3.0.1",
     "mocha": "^6.1.4",
     "nock": "^10.0.6",

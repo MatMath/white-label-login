@@ -1,8 +1,8 @@
-function clientErrorHandler (err, req, res, next) {
+function clientErrorHandler(err, req, res, next) {
   if (req.xhr) {
-    res.status(500).send({ error: 'Something failed!' })
+    res.status(500).send({ error: 'Something failed!' });
   } else {
-    next(err)
+    next(err);
   }
 }
 
