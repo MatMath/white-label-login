@@ -4,11 +4,12 @@
   "description": "Login page that depending on the user preference it will provide the proper app. ie: while label",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www.js",
+    "start": "nodemon dist",
     "lint": "eslint . --fix",
     "precommit": "npm run lint",
     "test": "mocha",
-    "dev": "webpack && concurrently \"webpack --watch\" \"nodemon dist\""
+    "build:client": "webpack --config ./config/webpack.client.js",
+    "build:server": "webpack --config ./config/webpack.server.js"
   },
   "author": "mkl",
   "license": "MIT",

@@ -11,9 +11,9 @@ const availableApps = {
 };
 
 
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
-import Hello from './public/Hello'
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import Hello from '../client/login/Hello';
 
 // local files
 const clientErrorHandler = require('./clientErrorHandler');
