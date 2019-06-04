@@ -10,6 +10,11 @@ const availableApps = {
   app2: path.join(DIST_DIR, '../dist', 'app2.html'),
 };
 
+
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import Hello from './public/Hello'
+
 // local files
 const clientErrorHandler = require('./clientErrorHandler');
 const { decodeToken, checkAppPermision, isUserAlreadyLoggedin } = require('./middleware/auth');
@@ -29,11 +34,26 @@ app.use(require('express-bunyan-logger')({
 }));
 
 app.use(clientErrorHandler);
-
 // URl to handle.
+app.use('/static', express.static(path.resolve(__dirname, 'public')))
 app.use(express.static(DIST_DIR));
-app.get('/login', isUserAlreadyLoggedin({ redirect: '/' }), (req, res) => {
-  res.sendFile(login);
+app.get('/login', (req, res) => {
+  const name = 'initial data'
+  const component = ReactDOMServer.renderToString(<Hello name={name} />)
+
+  const html = `
+  <!doctype html>
+    <html>
+    <head>
+      <script>window.__INITIAL__DATA__ = ${JSON.stringify({ name })}</script>
+    </head>
+    <body>
+    <div id="root">${component}</div>
+    <script src="/static/home.js"></script>
+  </body>
+  </html>`
+
+  res.send(html)
 });
 
 // Secured URL depending on the user.
@@ -48,4 +68,4 @@ app.get('*', checkAppPermision({ redirect: '/login' }), (req, res) => {
   return res.sendFile(availableApps.app1);
 });
 
-module.exports = app;
+export default app;

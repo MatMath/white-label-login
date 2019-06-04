@@ -1,5 +1,5 @@
-#!/bin/node
-const app = require('../src/server');
+// #!/bin/node
+import app from '../src/server';
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
