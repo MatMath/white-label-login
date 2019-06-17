@@ -1,7 +1,7 @@
 const { expect } = require('chai');
-
 const supertest = require('supertest');
-const server = require('../src/server');
+
+const server = require('../../src/server');
 
 // ex: {
 // "user_id": 5,

@@ -4,10 +4,11 @@
   "description": "Login page that depending on the user preference it will provide the proper app. ie: while label",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www.js",
     "lint": "eslint . --fix",
     "precommit": "npm run lint",
-    "test": "mocha"
+    "start": "nodemon ./bin/www.js",
+    "test": "mocha test/unit/**/*.js test/integration/**/*.js",
+    "test:e2e": "mocha test/e2e/**/*.js --timeout 10000"
   },
   "author": "mkl",
   "license": "MIT",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chromedriver": "^74.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-chai-expect": "^2.0.1",
@@ -30,6 +32,7 @@
     "mocha": "^6.1.4",
     "nock": "^10.0.6",
     "nodemon": "^1.19.1",
+    "selenium-webdriver": "^4.0.0-alpha.1",
     "supertest": "^4.0.2"
   }
 }
